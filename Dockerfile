@@ -47,7 +47,7 @@ WORKDIR /app/bazel-buildfarm
 
 # need install redis
 
-RUN apt install -y vim redis-server
+# RUN apt install -y vim redis-server
 # RUN sed -i # to configure bind address at /etc/redis/redis.conf
 # RUN redis-server /etc/redis/redis.conf
 # RUN /var/log/redis/redis-server.log
