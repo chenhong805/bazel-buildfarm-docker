@@ -5,24 +5,24 @@ services:
     image: redis:latest
     restart: always
     ports:
-      - "6379:6379"
+      - 6379:6379
   server:
     build:
       context: .
+    command: 'bazel run //src/main/java/build/buildfarm:buildfarm-server -- --jvm_flag=-Djava.util.logging.config.file=$PWD/examples/logging.properties $PWD/examples/config.minimal.yml'
     volumes:
       - ./config:/config
     ports:
       - 8980:8980
+    depends_on:
+      - buildfarm_redis
 
   worker:
-    entrypoint: "/app/buildfarm-operationqueue-worker /config/worker.config"
+    # entrypoint: "/app/buildfarm-operationqueue-worker /config/worker.config"
+    command: 'bazel run //src/main/java/build/buildfarm:buildfarm-shard-worker -- --jvm_flag=-Djava.util.logging.config.file=$PWD/examples/logging.properties $PWD/examples/config.minimal.yml'
     build:
       context: .
     volumes:
       - ./config:/config
     depends_on:
       - server
-      
-
-
-  # -- to add redis node..
