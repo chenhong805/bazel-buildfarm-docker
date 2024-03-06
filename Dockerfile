@@ -45,11 +45,11 @@ RUN echo "startup --host_jvm_args=-Djavax.net.ssl.trustStore=${JAVA_KEYSTORE} --
 RUN git clone --depth 1 --branch 2.9.0 https://github.com/bazelbuild/bazel-buildfarm /app/bazel-buildfarm
 WORKDIR /app/bazel-buildfarm
 
-RUN bazel build //src/main/java/build/buildfarm:buildfarm-server
-RUN bazel build //src/main/java/build/buildfarm:buildfarm-shard-worker
+#RUN bazel build //src/main/java/build/buildfarm:buildfarm-server
+#RUN bazel build //src/main/java/build/buildfarm:buildfarm-shard-worker
 
-WORKDIR /app
-RUN mv bazel-buildfarm/bazel-bin/src/main/java/build/buildfarm/buildfarm-server* bazel-buildfarm/bazel-bin/src/main/java/build/buildfarm:buildfarm-shard-worker* /app \
-  && rm -rf /app/bazel-buildfarm
+#WORKDIR /app
+#RUN mv bazel-buildfarm/bazel-bin/src/main/java/build/buildfarm/buildfarm-server* bazel-buildfarm/bazel-bin/src/main/java/build/buildfarm:buildfarm-shard-worker* /app \
+#  && rm -rf /app/bazel-buildfarm
 
-ENTRYPOINT /app/buildfarm-server /config/server.config
+#ENTRYPOINT /app/buildfarm-server /config/server.config
