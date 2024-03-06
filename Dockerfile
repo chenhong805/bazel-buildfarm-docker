@@ -57,6 +57,8 @@ RUN apt install -y vim redis-server
 #RUN bazel build //src/main/java/build/buildfarm:buildfarm-shard-worker
 # RUN bazel run //src/main/java/build/buildfarm:buildfarm-shard-worker -- --jvm_flag=-Djava.util.logging.config.file=$PWD/examples/logging.properties $PWD/examples/config.minimal.yml
 
+# -- to add redis node: https://github.com/bazelbuild/bazel-buildfarm/tree/2.9.0
+# 
 
 #WORKDIR /app
 #RUN mv bazel-buildfarm/bazel-bin/src/main/java/build/buildfarm/buildfarm-server* bazel-buildfarm/bazel-bin/src/main/java/build/buildfarm:buildfarm-shard-worker* /app \
