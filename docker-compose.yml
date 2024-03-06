@@ -29,3 +29,14 @@ services:
     network_mode: "host"
     depends_on:
       - server
+
+
+# Note:
+# this works now.
+
+# jinhongc@jinhongc-PowerEdge-R630-2:~/git/tesseract$ cat .bazelrc 
+# build --remote_executor=grpc://localhost:8980
+
+
+# TODO:
+# -- upgrade image in Dockerfile to use latest Dockerfile2.Dockerfile image to have all compilation tool and libraries dependencies.
