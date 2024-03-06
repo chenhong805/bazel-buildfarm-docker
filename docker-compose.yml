@@ -17,3 +17,6 @@ services:
       - ./config:/config
     depends_on:
       - server
+
+
+  # -- to add redis node..
