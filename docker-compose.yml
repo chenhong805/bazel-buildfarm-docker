@@ -39,6 +39,8 @@ services:
 
 
 # TODO:
-# -- upgrade image in Dockerfile to use latest Dockerfile2.Dockerfile image to have all compilation tool and libraries dependencies.
-# -- more workers
-# -- optimize server and worker config?
+# [done] upgrade image in Dockerfile to use latest Dockerfile2.Dockerfile image to have all compilation tool and libraries dependencies.
+# [done] more workers (1 worker multiple CPUs, can deploy to other machine later)
+# [done] optimize server and worker config? (already using max cpu)
+
+# build command: bazel build --remote_executor=grpc://<host>:8980 <bazel_target>
