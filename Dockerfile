@@ -46,10 +46,10 @@ RUN git clone --depth 1 --branch 2.9.0 https://github.com/bazelbuild/bazel-build
 WORKDIR /app/bazel-buildfarm
 
 RUN bazel build //src/main/java/build/buildfarm:buildfarm-server
-RUN bazel build //src/main/java/build/buildfarm:buildfarm-operationqueue-worker
+RUN bazel build //src/main/java/build/buildfarm:buildfarm-shard-worker
 
 WORKDIR /app
-RUN mv bazel-buildfarm/bazel-bin/src/main/java/build/buildfarm/buildfarm-server* bazel-buildfarm/bazel-bin/src/main/java/build/buildfarm/buildfarm-operationqueue-worker* /app \
+RUN mv bazel-buildfarm/bazel-bin/src/main/java/build/buildfarm/buildfarm-server* bazel-buildfarm/bazel-bin/src/main/java/build/buildfarm:buildfarm-shard-worker* /app \
   && rm -rf /app/bazel-buildfarm
 
 ENTRYPOINT /app/buildfarm-server /config/server.config
