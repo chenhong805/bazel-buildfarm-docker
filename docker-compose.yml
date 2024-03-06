@@ -9,7 +9,7 @@ services:
   server:
     build:
       context: .
-    command: 'bazel run //src/main/java/build/buildfarm:buildfarm-server -- --jvm_flag=-Djava.util.logging.config.file=./examples/logging.properties ./examples/config.minimal.yml'
+    command: 'bazel run //src/main/java/build/buildfarm:buildfarm-server -- --jvm_flag=-Djava.util.logging.config.file=/app/bazel-buildfarm/examples/logging.properties /app/bazel-buildfarm/examples/config.minimal.yml'
     volumes:
       - ./config:/config
     ports:
@@ -19,7 +19,7 @@ services:
 
   worker:
     # entrypoint: "/app/buildfarm-operationqueue-worker /config/worker.config"
-    command: 'bazel run //src/main/java/build/buildfarm:buildfarm-shard-worker -- --jvm_flag=-Djava.util.logging.config.file=./examples/logging.properties ./examples/config.minimal.yml'
+    command: 'bazel run //src/main/java/build/buildfarm:buildfarm-shard-worker -- --jvm_flag=-Djava.util.logging.config.file=/app/bazel-buildfarm/examples/logging.properties /app/bazel-buildfarm/examples/config.minimal.yml'
     build:
       context: .
     volumes:
