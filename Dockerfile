@@ -11,7 +11,7 @@ ENV JAVA_KEYSTORE=${JAVA_KEYSTORE}
 ARG JAVA_KEYSTORE_PASSWORD=changeit
 ENV JAVA_KEYSTORE_PASSWORD=${JAVA_KEYSTORE_PASSWORD}
 
-ARG BAZEL_VERSION=1.1.0
+ARG BAZEL_VERSION=6.5.0
 ENV BAZEL_VERSION=${BAZEL_VERSION}
 ENV DEB_FILE=bazel_$BAZEL_VERSION-linux-x86_64.deb
 
@@ -42,7 +42,7 @@ RUN dpkg -i ${DEB_FILE}\
 # --host_jvm_args=-Djavax.net.debug=all
 RUN echo "startup --host_jvm_args=-Djavax.net.ssl.trustStore=${JAVA_KEYSTORE} --host_jvm_args=-Djavax.net.ssl.trustStorePassword=${JAVA_KEYSTORE_PASSWORD} --host_jvm_args=-Djava.net.useSystemProxies=true" > ~/.bazelrc
 
-RUN git clone https://github.com/bazelbuild/bazel-buildfarm /app/bazel-buildfarm
+RUN git clone --depth 1 --branch 2.9.0 https://github.com/bazelbuild/bazel-buildfarm /app/bazel-buildfarm
 WORKDIR /app/bazel-buildfarm
 
 RUN bazel build //src/main/java/build/buildfarm:buildfarm-server
