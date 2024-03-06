@@ -47,6 +47,11 @@ WORKDIR /app/bazel-buildfarm
 
 # need install redis
 
+RUN apt install -y vim redis-server
+# RUN sed -i # to configure bind address at /etc/redis/redis.conf
+# RUN redis-server /etc/redis/redis.conf
+# RUN /var/log/redis/redis-server.log
+
 #RUN bazel build //src/main/java/build/buildfarm:buildfarm-server
 # RUN bazel run //src/main/java/build/buildfarm:buildfarm-server -- --jvm_flag=-Djava.util.logging.config.file=$PWD/examples/logging.properties $PWD/examples/config.minimal.yml
 #RUN bazel build //src/main/java/build/buildfarm:buildfarm-shard-worker
