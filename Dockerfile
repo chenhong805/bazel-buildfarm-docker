@@ -45,8 +45,13 @@ RUN echo "startup --host_jvm_args=-Djavax.net.ssl.trustStore=${JAVA_KEYSTORE} --
 RUN git clone --depth 1 --branch 2.9.0 https://github.com/bazelbuild/bazel-buildfarm /app/bazel-buildfarm
 WORKDIR /app/bazel-buildfarm
 
+# need install redis
+
 #RUN bazel build //src/main/java/build/buildfarm:buildfarm-server
+# RUN bazel run //src/main/java/build/buildfarm:buildfarm-server -- --jvm_flag=-Djava.util.logging.config.file=$PWD/examples/logging.properties $PWD/examples/config.minimal.yml
 #RUN bazel build //src/main/java/build/buildfarm:buildfarm-shard-worker
+# RUN bazel run //src/main/java/build/buildfarm:buildfarm-shard-worker -- --jvm_flag=-Djava.util.logging.config.file=$PWD/examples/logging.properties $PWD/examples/config.minimal.yml
+
 
 #WORKDIR /app
 #RUN mv bazel-buildfarm/bazel-bin/src/main/java/build/buildfarm/buildfarm-server* bazel-buildfarm/bazel-bin/src/main/java/build/buildfarm:buildfarm-shard-worker* /app \
