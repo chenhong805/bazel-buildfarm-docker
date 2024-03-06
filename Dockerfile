@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM jinhongc/bazel-python:2
 
 ARG PROXY
 ENV http_proxy $PROXY
