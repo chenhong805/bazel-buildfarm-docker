@@ -5,8 +5,8 @@ services:
     image: redis:latest
     restart: always
     network_mode: "host"
-    ports:
-      - 6379:6379
+    #ports:
+    #  - 6379:6379
   server:
     build:
       context: .
@@ -14,8 +14,8 @@ services:
     volumes:
       - ./config:/config
     network_mode: "host"
-    ports:
-      - 8980:8980
+    #ports:
+    #  - 8980:8980
     depends_on:
       - buildfarm_redis
 
