@@ -40,3 +40,5 @@ services:
 
 # TODO:
 # -- upgrade image in Dockerfile to use latest Dockerfile2.Dockerfile image to have all compilation tool and libraries dependencies.
+# -- more workers
+# -- optimize server and worker config?
