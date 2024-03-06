@@ -26,7 +26,6 @@ RUN apt-get install --no-install-recommends -y \
   unzip \
   wget \
   zlib1g-dev \
-  python \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
