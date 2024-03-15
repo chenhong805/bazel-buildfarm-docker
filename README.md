@@ -12,6 +12,16 @@ To build and start the containers, just run
 docker-compose up --build
 ```
 
+To configure automatic start up:
+
+```
+$ sudo systemctl enable docker
+```
+
+and your services in your docker-compose.yml has
+```
+restart: always
+```
 ## Build arguments
 
 | Name                     | Default                                                    | Description                                                                                                                     |
