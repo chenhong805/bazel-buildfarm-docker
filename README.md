@@ -10,6 +10,9 @@ To build and start the containers, just run
 
 ```bash
 docker-compose up --build
+
+# to run in background/detached mode
+docker-compose up --build -d
 ```
 
 To configure automatic start up:
