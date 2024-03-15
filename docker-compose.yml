@@ -2,12 +2,14 @@ version: "2"
 
 services:
   buildfarm_redis:
+    restart: always
     image: redis:latest
     restart: always
     network_mode: "host"
     #ports:
     #  - 6379:6379
   server:
+    restart: always
     build:
       context: .
     command: 'bazel run //src/main/java/build/buildfarm:buildfarm-server -- --jvm_flag=-Djava.util.logging.config.file=/app/bazel-buildfarm/examples/logging.properties /app/bazel-buildfarm/examples/config.minimal.yml'
@@ -20,6 +22,7 @@ services:
       - buildfarm_redis
 
   worker:
+    restart: always
     # entrypoint: "/app/buildfarm-operationqueue-worker /config/worker.config"
     command: 'bazel run //src/main/java/build/buildfarm:buildfarm-shard-worker -- --jvm_flag=-Djava.util.logging.config.file=/app/bazel-buildfarm/examples/logging.properties /app/bazel-buildfarm/examples/config.minimal.yml'
     build:
