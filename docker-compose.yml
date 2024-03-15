@@ -4,7 +4,6 @@ services:
   buildfarm_redis:
     restart: always
     image: redis:latest
-    restart: always
     network_mode: "host"
     #ports:
     #  - 6379:6379
